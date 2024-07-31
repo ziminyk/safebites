@@ -78,24 +78,30 @@ const Category10 = ({ onNext }) => {
                 <div>
                     <h2 id="question">QUESTION 1</h2>
                     <label className="title-text">How many items does your menu have in total?</label>
-                    <input 
-                        type="number" 
-                        value={questionOneAnswer} 
-                        onChange={handleQuestionOne} 
-                        min="0" 
-                    />
+                    <div className="form-control">
+                        <input 
+                            className="input input-alt" 
+                            placeholder="Enter a number" 
+                            required 
+                            type="number" 
+                        />
+                        <span className="input-border input-border-alt"></span>
+                    </div>
                 </div>
             )}
             {currentQuestion === 2 && (
                 <div>
                     <h2 id="question">QUESTION 2</h2>
                     <label className="title-text">How many of your menu items are free of meat but include other animal products (e.g., dairy, eggs, or honey)?</label>
-                    <input 
-                        type="number" 
-                        value={questionTwoAnswer} 
-                        onChange={handleQuestionTwo} 
-                        min="0" 
-                    />
+                    <div className="form-control">
+                        <input 
+                            className="input input-alt" 
+                            placeholder="Enter a number" 
+                            required 
+                            type="number" 
+                        />
+                        <span className="input-border input-border-alt"></span>
+                    </div>
                 </div>
             )}
             {currentQuestion === 3 && (

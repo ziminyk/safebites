@@ -190,11 +190,11 @@ const Category3 = ({ onNext }) => {
 
       {/* USER CLICKS YES */}
       {isQuestionOneVisible && (
-        <div class="hello">
+        <div className="hello">
           <h2 id="question">Question 1</h2>
           <form>
             <label className="title-text">Are tree nuts present in your menu items?</label><br />
-            <button type="button" class="top" onClick={() => handleQuestion1('yes')}>Yes</button>
+            <button type="button" className="top" onClick={() => handleQuestion1('yes')}>Yes</button>
             <button type="button" onClick={() => handleQuestion1('no')}>No</button>
             <button type="button" onClick={() => handleQuestion1('not-sure')}>Unsure</button><br /><br />
           </form>
