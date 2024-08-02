@@ -74,7 +74,7 @@ const App = () => {
         </div>
       ) : (
         <>
-      <Header onLogoClick={handleLogoClick} />
+      <Header header={handleLogoClick} />
       <div className="stuff">
         <Sidebar currentSection={currentSection} onNext={handleNext} />
         <div className="main-content">

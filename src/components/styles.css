@@ -135,10 +135,11 @@ body {
 }
 
 .small {
-    display: block;
-    width: 95%;
-    float: right;
+  height: 70px;
+  width: 95vw;
+  padding: 10px;
 }
+
 
 .homie {
     display:flex;
