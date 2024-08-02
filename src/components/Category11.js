@@ -38,7 +38,6 @@ const Category11 = ({ onNext }) => {
 
     return (
         <div className="survey-section active">
-            <ProgressBar progress={progress} />
             {currentQuestion === 1 && (
                 <div>
                     <h2 id="question">QUESTION 1</h2>

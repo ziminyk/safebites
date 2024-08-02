@@ -44,7 +44,7 @@ const App = () => {
 
   const handleNext = (section, category, increment) => {
     setCurrentSection(section); 
-    setProgress((section - 1) * 100 / 15);
+    setProgress(((section - 1) / 14) *100);
     setScore(prevScore => ({
       ...prevScore,
       [category]: prevScore[category] + increment
@@ -53,10 +53,12 @@ const App = () => {
 
   const startSurvey = () => {
     setCurrentSection(1);
+    setProgress(0);
   };
 
   const handleLogoClick = () => {
     setCurrentSection(0);
+    setProgress(0);
   };
 
   return (
@@ -76,6 +78,7 @@ const App = () => {
       <div className="stuff">
         <Sidebar currentSection={currentSection} onNext={handleNext} />
         <div className="main-content">
+          <ProgressBar progress={progress} />
           {currentSection === 1 && <Category1 onNext={handleNext} />}
           {currentSection === 2 && <Category2 onNext={handleNext} />}
           {currentSection === 3 && <Category3 onNext={handleNext} />}

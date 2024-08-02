@@ -254,6 +254,7 @@ h2 {
     width: 400px;
     flex-grow: 3;
     padding-top: 0px;
+    flex-direction: column;
 }
 
 .progress-bar {
@@ -501,6 +502,8 @@ button:hover{
     position: relative;
     --width-of-input: 300px;
   }
+
+  
   
   .input-alt {
     font-size: 1.2rem;

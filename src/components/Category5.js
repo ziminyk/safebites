@@ -186,7 +186,6 @@ const Category5 = ({ onNext }) => {
 
   return (
     <div className="survey-section active">
-      <ProgressBar progress={progress} />
 
       {/* USER CLICKS YES */}
       {isQuestionOneVisible && (
