@@ -184,7 +184,8 @@ const Category1 = ({ onNext }) => {
     }
   
     return baseScore;
-  };  
+  };
+    
 
   return (
     <div className="survey-section active">
