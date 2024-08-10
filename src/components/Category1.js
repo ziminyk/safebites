@@ -345,7 +345,7 @@ const Category1 = ({ onNext }) => {
         >
           <img src={arrow} alt="arrow" />
         </button>
-      )} */
+      )}
     </div>
   );
 };
