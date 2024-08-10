@@ -382,6 +382,17 @@ button {
     cursor: pointer;
 }
 
+.check {
+  padding-top: 4%;
+  padding-right: 3%;
+  padding-left: 7px;
+}
+
+.question {
+  display: flex;
+  flex-direction: row;
+}
+
 button:hover{
     background: #D7D8DF;
 }
