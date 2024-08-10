@@ -333,12 +333,8 @@ const Category1 = ({ onNext }) => {
         </div>
       )}
 
-
-      {/* NEXT BUTTON
-      {(gluten === 'no' || (gluten === 'yes' && glutenMenuAmount) || (gluten === 'not-sure' && isGlutenFree === 'no')) && (gluten === 'yes' && !isQuestionThreeRequestVisible) && (
-=======
       {/* NEXT BUTTON */}
-      {/* {isComplete && (
+      {isComplete && (
         <button 
           className="button-category" 
           onClick={(e) => {
@@ -348,8 +344,8 @@ const Category1 = ({ onNext }) => {
           }}
         >
           <img src={arrow} alt="arrow" />
-        </button>}
-      } */}
+        </button>
+      )} */
     </div>
   );
 };
