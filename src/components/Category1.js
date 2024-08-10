@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProgressBar from './ProgressBar';
 import './styles.css';
 import arrow from '../images/arrow.svg';
@@ -18,6 +18,19 @@ const Category1 = ({ onNext }) => {
   const [isQuestionThreeRequestVisible, setIsQuestionThreeRequestVisible] = useState(false);
   const [isQuestionTwoAmountVisible, setIsQuestionTwoAmountVisible] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [isComplete, setIsComplete] = useState(false);
+
+  const checkCompletion = () => {
+    const complete = (gluten === 'no') ||
+      (gluten === 'yes' && glutenMenuAmount && isQuestionThreeRequestVisible) ||
+      (gluten === 'not-sure' && (isGlutenFree === 'no' || (checkedIngredients.length > 0 && glutenMenuAmount && isQuestionFourVisible)));
+    setIsComplete(complete);
+  };
+
+  useEffect(() => {
+    checkCompletion();
+  }, [gluten, glutenMenuAmount, isQuestionThreeRequestVisible, isGlutenFree, checkedIngredients, isQuestionFourVisible]);
+
 
   const updateProgress = () => {
     let progressValue = 0;
@@ -28,6 +41,7 @@ const Category1 = ({ onNext }) => {
     if (gluten === 'no' || (gluten === 'yes' && glutenMenuAmount) || (gluten === 'not-sure' && isGlutenFree === 'no')) progressValue += 20;
     console.log('Updated Progress:', progressValue);
     setProgress(progressValue);
+    checkCompletion();
   }
 
   const handleBack = () => {
@@ -319,8 +333,13 @@ const Category1 = ({ onNext }) => {
         </div>
       )}
 
+<<<<<<< HEAD
       {/* NEXT BUTTON
       {(gluten === 'no' || (gluten === 'yes' && glutenMenuAmount) || (gluten === 'not-sure' && isGlutenFree === 'no')) && (gluten === 'yes' && !isQuestionThreeRequestVisible) && (
+=======
+      {/* NEXT BUTTON */}
+      {isComplete && (
+>>>>>>> 02382a6f2fa52771648a60024bee7f61f3febc09
         <button 
           className="button-category" 
           onClick={(e) => {
