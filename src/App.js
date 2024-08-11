@@ -60,6 +60,7 @@ const App = () => {
       ...prevScore,
       [category]: prevScore[category] + increment
     }));
+    setSectionComplete(section - 1, true);
   };
 
   const setSectionComplete = (section, isComplete) => {
