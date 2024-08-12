@@ -34,33 +34,6 @@ body {
     color: #333; /* Adjust the color as needed */
 }
 
-  /*
-    .start-button {  
-        display: inline-block;  background-color: #f4511e;  border: none;  color: #FFFFFF;  text-align: center;  font-size: 28px;  padding: 20px;  width: 200px;  transition: all 0.5s;  cursor: pointer;  margin: 5px;
-    }
-
-    .start-button span {  cursor: pointer;  display: inline-block;  position: relative;  transition: 0.5s;}
-    .button span:after {
-        content: '\00bb';
-        position: absolute;  opacity: 0;  top: 0;  right: -20px;  transition: 0.5s;}
-    .start-button:hover span {  padding-right: 25px;}
-    .start-button:hover span:after {  opacity: 1;  right: 0;}
-
-  .start-button {
-    display: block;
-    padding: 10px 20px;
-    font-size: 16px;
-    margin-top: 20px;
-    cursor: pointer;
-    color: #ffffff;
-    background-color: #0A007B;
-    width: 100px;
-    height: 50px;
-    text-align: center;
-    float: right;
-  }
-  */
-
   .language-selector {
     display: flex;
     align-items: center;
@@ -382,6 +355,18 @@ button {
     cursor: pointer;
 }
 
+.options {
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 100%;
+}
+
+.options button {
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 100%;
+}
+
 .check {
   padding-top: 4%;
   padding-right: 3%;
@@ -489,8 +474,15 @@ button:hover{
   }
   
   .navigation-buttons button{
-    text-align: center;
-    width: 100%;
+    display: flex;
+    width: 120px;
+    padding: 17px 19px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 30px;
+    border: 1px #0A007B;
+    background: linear-gradient(0deg, #FFF 0%, #FFF 100%), #0B017C;
   }
 
   .input {
