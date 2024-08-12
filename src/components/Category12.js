@@ -55,9 +55,9 @@ const Category12 = ({ onNext }) => {
                     <h2 id="question">QUESTION 2</h2>
                     <label className="title-text">Is it possible to change the protein in other items on the menu to fish or other seafood if requested?</label>
                     <div>
-                        <button onClick={() => handleQuestionTwo('Yes')}>Yes</button>
-                        <button onClick={() => handleQuestionTwo('No')}>No</button>
-                        <button onClick={() => handleQuestionTwo('Some')}>Some</button>
+                        <button className="options" onClick={() => handleQuestionTwo('Yes')}>Yes</button>
+                        <button className="options" onClick={() => handleQuestionTwo('No')}>No</button>
+                        <button className="options" onClick={() => handleQuestionTwo('Some')}>Some</button>
                     </div>
                 </div>
             )}

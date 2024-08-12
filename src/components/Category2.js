@@ -192,9 +192,11 @@ const Category2 = ({ onNext }) => {
           <h2 id="question">Question 1</h2>
           <form>
             <label className="title-text">Is dairy present in your menu items?</label><br />
-            <button type="button" className="top" onClick={() => handleQuestion1('yes')}>Yes</button>
-            <button type="button" onClick={() => handleQuestion1('no')}>No</button>
-            <button type="button" onClick={() => handleQuestion1('not-sure')}>Unsure</button><br /><br />
+            <div className="options">
+              <button className="top" type="button" onClick={() => handleQuestion1('yes')}>Yes</button>
+            </div>
+            <button className="options" type="button" onClick={() => handleQuestion1('no')}>No</button>
+            <button className="options" type="button" onClick={() => handleQuestion1('not-sure')}>Unsure</button><br /><br />
           </form>
         </div>
       )}
@@ -204,10 +206,10 @@ const Category2 = ({ onNext }) => {
         <div id="gluten-details">
           <h2 id="question">Question 2</h2>
           <label className="title-text">How much of the menu contains dairy?</label><br />
-          <button type="button" onClick={() => handleYesAnsweredQuestion2('some')}>Some</button>
-          <button type="button" onClick={() => handleYesAnsweredQuestion2('half')}>Half</button>
-          <button type="button" onClick={() => handleYesAnsweredQuestion2('more than half')}>More than half</button>
-          <button type="button" onClick={() => handleYesAnsweredQuestion2('all')}>All</button><br /><br />
+          <button className="options" type="button" onClick={() => handleYesAnsweredQuestion2('some')}>Some</button>
+          <button className="options" type="button" onClick={() => handleYesAnsweredQuestion2('half')}>Half</button>
+          <button className="options" type="button" onClick={() => handleYesAnsweredQuestion2('more than half')}>More than half</button>
+          <button className="options" type="button" onClick={() => handleYesAnsweredQuestion2('all')}>All</button><br /><br />
         </div>
       )}
       {/* USER CLICKS YES - QUES.3 */}
@@ -215,9 +217,9 @@ const Category2 = ({ onNext }) => {
           <div id="request-question">
             <h2 id="question">Question 3</h2>
             <label className="title-text">Can these items be made without dairy upon request?</label><br />
-            <button type="button" onClick={() => handleYesAnsweredQuestion3('yes')}>Yes</button>
-            <button type="button" onClick={() => handleYesAnsweredQuestion3('some not all')}>Some not all</button>
-            <button type="button" onClick={() => handleYesAnsweredQuestion3('no')}>No</button><br /><br />
+            <button className="options" type="button" onClick={() => handleYesAnsweredQuestion3('yes')}>Yes</button>
+            <button className="options" type="button" onClick={() => handleYesAnsweredQuestion3('some not all')}>Some not all</button>
+            <button className="options" type="button" onClick={() => handleYesAnsweredQuestion3('no')}>No</button><br /><br />
           </div>
         )}
 
@@ -238,8 +240,8 @@ const Category2 = ({ onNext }) => {
               <li>Sour cream </li>
               <li>All types of cow’s milk, goat’s milk, and buffalo milk </li>
             </ul>
-            <button type="button" onClick={() => handleUnsureAnsweredYes('yes')}>Yes</button>
-            <button type="button" onClick={() => handleUnsureAnsweredNo('no')}>No</button>
+            <button className="options" type="button" onClick={() => handleUnsureAnsweredYes('yes')}>Yes</button>
+            <button className="options" type="button" onClick={() => handleUnsureAnsweredNo('no')}>No</button>
           </div>
         )}
 
@@ -248,10 +250,10 @@ const Category2 = ({ onNext }) => {
           <div id="gluten-details">
             <h2 id="question">Question 3</h2>
             <label className="title-text">How much of the menu contains dairy?</label><br />
-            <button type="button" onClick={() => handleUnsureAnsweredQuestion3('some')}>Some</button>
-            <button type="button" onClick={() => handleUnsureAnsweredQuestion3('half')}>Half</button>
-            <button type="button" onClick={() => handleUnsureAnsweredQuestion3('more than half')}>More than half</button>
-            <button type="button" onClick={() => handleUnsureAnsweredQuestion3('all')}>All</button><br /><br />
+            <button className="options" type="button" onClick={() => handleUnsureAnsweredQuestion3('some')}>Some</button>
+            <button className="options" type="button" onClick={() => handleUnsureAnsweredQuestion3('half')}>Half</button>
+            <button className="options" type="button" onClick={() => handleUnsureAnsweredQuestion3('more than half')}>More than half</button>
+            <button className="options" type="button" onClick={() => handleUnsureAnsweredQuestion3('all')}>All</button><br /><br />
           </div>
         )}
 
@@ -260,9 +262,9 @@ const Category2 = ({ onNext }) => {
         <div id="request-question">
           <h2 id="question">Question 4</h2>
           <label className="title-text">Can these items be made without dairy upon request?</label><br />
-          <button type="button" onClick={() => handleUnsureAnsweredQuestion4('yes')}>Yes</button>
-          <button type="button" onClick={() => handleUnsureAnsweredQuestion4('some not all')}>Some not all</button>
-          <button type="button" onClick={() => handleUnsureAnsweredQuestion4('no')}>No</button><br /><br />
+          <button className="options" type="button" onClick={() => handleUnsureAnsweredQuestion4('yes')}>Yes</button>
+          <button className="options" type="button" onClick={() => handleUnsureAnsweredQuestion4('some not all')}>Some not all</button>
+          <button className="options" type="button" onClick={() => handleUnsureAnsweredQuestion4('no')}>No</button><br /><br />
         </div>
       )}
 

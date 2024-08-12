@@ -108,9 +108,9 @@ const Category10 = ({ onNext }) => {
                     <h2 id="question">QUESTION 3</h2>
                     <label className="title-text">Do you offer plant-based protein options (e.g., beans, lentils, tofu) as substitutes for meat in other non-vegetarian dishes?</label>
                     <div>
-                        <button onClick={() => handleQuestionThree('Yes')}>Yes</button>
-                        <button onClick={() => handleQuestionThree('No')}>No</button>
-                        <button onClick={() => handleQuestionThree('Unsure')}>Unsure</button>
+                        <button className="options" onClick={() => handleQuestionThree('Yes')}>Yes</button>
+                        <button className="options" onClick={() => handleQuestionThree('No')}>No</button>
+                        <button className="options" onClick={() => handleQuestionThree('Unsure')}>Unsure</button>
                     </div>
                 </div>
             )}
