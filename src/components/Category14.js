@@ -38,7 +38,6 @@ const Category14 = ({ onNext }) => {
 
     return (
         <div className="survey-section active">
-            <ProgressBar progress={progress} />
             {currentQuestion === 1 && (
                 <div>
                     <h2 id="question">QUESTION 1</h2>
@@ -56,9 +55,9 @@ const Category14 = ({ onNext }) => {
                     <h2 id="question">QUESTION 2</h2>
                     <label className="title-text">Is it possible to change the items on the menu that have pork to another type of protein?</label>
                     <div>
-                        <button onClick={() => handleQuestionTwo('Yes')}>Yes</button>
-                        <button onClick={() => handleQuestionTwo('No')}>No</button>
-                        <button onClick={() => handleQuestionTwo('Sometimes')}>Sometimes</button>
+                        <button className="options" onClick={() => handleQuestionTwo('Yes')}>Yes</button>
+                        <button className="options" onClick={() => handleQuestionTwo('No')}>No</button>
+                        <button className="options" onClick={() => handleQuestionTwo('Sometimes')}>Sometimes</button>
                     </div>
                 </div>
             )}

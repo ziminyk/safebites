@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProgressBar from './ProgressBar';
 import './styles.css';
 import arrow from '../images/arrow.svg';
@@ -18,6 +18,19 @@ const Category1 = ({ onNext }) => {
   const [isQuestionThreeRequestVisible, setIsQuestionThreeRequestVisible] = useState(false);
   const [isQuestionTwoAmountVisible, setIsQuestionTwoAmountVisible] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [isComplete, setIsComplete] = useState(false);
+
+  const checkCompletion = () => {
+    const complete = (gluten === 'no') ||
+      (gluten === 'yes' && glutenMenuAmount && isQuestionThreeRequestVisible) ||
+      (gluten === 'not-sure' && (isGlutenFree === 'no' || (checkedIngredients.length > 0 && glutenMenuAmount && isQuestionFourVisible)));
+    setIsComplete(complete);
+  };
+
+  useEffect(() => {
+    checkCompletion();
+  }, [gluten, glutenMenuAmount, isQuestionThreeRequestVisible, isGlutenFree, checkedIngredients, isQuestionFourVisible]);
+
 
   const updateProgress = () => {
     let progressValue = 0;
@@ -28,25 +41,48 @@ const Category1 = ({ onNext }) => {
     if (gluten === 'no' || (gluten === 'yes' && glutenMenuAmount) || (gluten === 'not-sure' && isGlutenFree === 'no')) progressValue += 20;
     console.log('Updated Progress:', progressValue);
     setProgress(progressValue);
+    checkCompletion();
   }
+
+  const handleBack = () => {
+    if (isQuestionFourVisible) {
+      setIsQuestionFourVisible(false);
+      setIsQuestionThreeVisible(true);
+      setIsQuestionThreeAmountVisible(true);
+    } else if (isQuestionThreeRequestVisible) {
+      setIsQuestionThreeRequestVisible(false);
+      setIsQuestionTwoAmountVisible(true);
+    } else if (isQuestionThreeVisible && isQuestionThreeAmountVisible) {
+      setIsQuestionThreeVisible(false);
+      setIsQuestionThreeAmountVisible(false);
+      setIsQuestionTwoNotSure(true);
+    } else if (isQuestionTwoAmountVisible && isQuestionTwoYes) {
+      setIsQuestionTwoAmountVisible(false);
+      setIsQuestionOneVisible(true);
+    } else if (isQuestionTwoAmountVisible && isQuestionTwoNotSure) {
+      setIsQuestionTwoNotSure(false);
+      setIsQuestionTwoAmountVisible(false);
+      setIsQuestionOneVisible(true);
+    }
+  };
 
   // QUESTION 1 (YES/NO/UNSURE)
   const handleQuestion1 = (value) => {
-    if (gluten === value) {
-      setGluten('');
-      setIsQuestionTwoYes(false);
-      setIsQuestionTwoNotSure(false);
-      setCheckedIngredients([]);
-      setGlutenMenuAmount('');
-      setIsGlutenFree('');
-      setIsQuestionOneVisible(true);
-      setIsQuestionThreeVisible(false);
-      setIsQuestionFourVisible(false);
-      setIsQuestionThreeAmountVisible(false);
-      setIsQuestionThreeRequestVisible(false);
-      setProgress(0);
-      setIsQuestionTwoAmountVisible(true);
-    } else {
+    // if (gluten === value) {
+      // setGluten('');
+      // setIsQuestionTwoYes(false);
+      // setIsQuestionTwoNotSure(false);
+      // setCheckedIngredients([]);
+      // setGlutenMenuAmount('');
+      // setIsGlutenFree('');
+      // setIsQuestionOneVisible(true);
+      // setIsQuestionThreeVisible(false);
+      // setIsQuestionFourVisible(false);
+      // setIsQuestionThreeAmountVisible(false);
+      // setIsQuestionThreeRequestVisible(false);
+      // setProgress(0);
+      // setIsQuestionTwoAmountVisible(true);
+    // } else {
       setGluten(value);
       setIsQuestionTwoYes(value === 'yes');
       setIsQuestionTwoNotSure(value === 'not-sure');
@@ -64,7 +100,7 @@ const Category1 = ({ onNext }) => {
         setIsQuestionOneVisible(false);
         setIsQuestionThreeRequestVisible(false);
       }
-    }
+    // }
     updateProgress();
   };
 
@@ -184,21 +220,22 @@ const Category1 = ({ onNext }) => {
     }
   
     return baseScore;
-  };  
+  };
+    
 
   return (
     <div className="survey-section active">
-      <ProgressBar progress={progress} />
-
       {/* USER CLICKS YES */}
       {isQuestionOneVisible && (
-        <div class="hello">
+        <div className="hello">
           <h2 id="question">Question 1</h2>
           <form>
             <label className="title-text">Is gluten present in your menu items?</label><br />
-            <button type="button" class="top" onClick={() => handleQuestion1('yes')}>Yes</button>
-            <button type="button" onClick={() => handleQuestion1('no')}>No</button>
-            <button type="button" onClick={() => handleQuestion1('not-sure')}>Unsure</button><br /><br />
+            <div className='options'>
+              <button className='top' type="button" onClick={() => handleQuestion1('yes')}>Yes</button>
+            </div>
+            <button className="options" type="button" onClick={() => handleQuestion1('no')}>No</button>
+            <button className="options" type="button" onClick={() => handleQuestion1('not-sure')}>Unsure</button><br /><br />
           </form>
         </div>
       )}
@@ -208,10 +245,13 @@ const Category1 = ({ onNext }) => {
         <div id="gluten-details">
           <h2 id="question">Question 2</h2>
           <label className="title-text">How much of the menu contains gluten?</label><br />
-          <button type="button" onClick={() => handleYesAnsweredQuestion2('some')}>Some</button>
-          <button type="button" onClick={() => handleYesAnsweredQuestion2('half')}>Half</button>
-          <button type="button" onClick={() => handleYesAnsweredQuestion2('more than half')}>More than half</button>
-          <button type="button" onClick={() => handleYesAnsweredQuestion2('all')}>All</button><br /><br />
+          <button className="options" type="button" onClick={() => handleYesAnsweredQuestion2('some')}>Some</button>
+          <button className="options" type="button" onClick={() => handleYesAnsweredQuestion2('half')}>Half</button>
+          <button className="options" type="button" onClick={() => handleYesAnsweredQuestion2('more than half')}>More than half</button>
+          <button className="options" type="button" onClick={() => handleYesAnsweredQuestion2('all')}>All</button>
+          <div className="navigation-buttons">
+            <button className="back-button" type="button" onClick={handleBack}>Back</button>
+          </div>
         </div>
       )}
       {/* USER CLICKS YES - QUES.3 */}
@@ -219,9 +259,12 @@ const Category1 = ({ onNext }) => {
           <div id="request-question">
             <h2 id="question">Question 3</h2>
             <label className="title-text">Can these items be made without gluten upon request?</label><br />
-            <button type="button" onClick={() => handleYesAnsweredQuestion3('yes')}>Yes</button>
-            <button type="button" onClick={() => handleYesAnsweredQuestion3('some not all')}>Some not all</button>
-            <button type="button" onClick={() => handleYesAnsweredQuestion3('no')}>No</button><br /><br />
+            <button className="options" type="button" onClick={() => handleYesAnsweredQuestion3('yes')}>Yes</button>
+            <button className="options" type="button" onClick={() => handleYesAnsweredQuestion3('some not all')}>Some not all</button>
+            <button className="options" type="button" onClick={() => handleYesAnsweredQuestion3('no')}>No</button>
+            <div className="navigation-buttons">
+              <button className='back-button' type="button" onClick={handleBack}>Back</button>
+            </div>
           </div>
         )}
 
@@ -255,8 +298,11 @@ const Category1 = ({ onNext }) => {
               <li>Oil that was used for frying breaded foods </li>
               <li>Canned tuna (except tuna containing only water and salt) </li>
             </ul>
-            <button type="button" onClick={() => handleUnsureAnsweredYes('yes')}>Yes</button>
-            <button type="button" onClick={() => handleUnsureAnsweredNo('no')}>No</button>
+            <button className="options" type="button" onClick={() => handleUnsureAnsweredYes('yes')}>Yes</button>
+            <button className="options" type="button" onClick={() => handleUnsureAnsweredNo('no')}>No</button>
+            <div className="navigation-buttons">
+              <button className='back-button' type="button" onClick={handleBack}>Back</button>
+            </div>
           </div>
         )}
 
@@ -265,10 +311,13 @@ const Category1 = ({ onNext }) => {
           <div id="gluten-details">
             <h2 id="question">Question 3</h2>
             <label className="title-text">How much of the menu contains gluten?</label><br />
-            <button type="button" onClick={() => handleUnsureAnsweredQuestion3('some')}>Some</button>
-            <button type="button" onClick={() => handleUnsureAnsweredQuestion3('half')}>Half</button>
-            <button type="button" onClick={() => handleUnsureAnsweredQuestion3('more than half')}>More than half</button>
-            <button type="button" onClick={() => handleUnsureAnsweredQuestion3('all')}>All</button><br /><br />
+            <button className="options" type="button" onClick={() => handleUnsureAnsweredQuestion3('some')}>Some</button>
+            <button className="options" type="button" onClick={() => handleUnsureAnsweredQuestion3('half')}>Half</button>
+            <button className="options" type="button" onClick={() => handleUnsureAnsweredQuestion3('more than half')}>More than half</button>
+            <button className="options" type="button" onClick={() => handleUnsureAnsweredQuestion3('all')}>All</button><br /><br />
+            <div className="navigation-buttons">
+              <button className='back-button' type="button" onClick={handleBack}>Back</button>
+            </div>
           </div>
         )}
 
@@ -277,14 +326,17 @@ const Category1 = ({ onNext }) => {
         <div id="request-question">
           <h2 id="question">Question 4</h2>
           <label className="title-text">Can these items be made without gluten upon request?</label><br />
-          <button type="button" onClick={() => handleUnsureAnsweredQuestion4('yes')}>Yes</button>
-          <button type="button" onClick={() => handleUnsureAnsweredQuestion4('some not all')}>Some not all</button>
-          <button type="button" onClick={() => handleUnsureAnsweredQuestion4('no')}>No</button><br /><br />
+          <button className="options" type="button" onClick={() => handleUnsureAnsweredQuestion4('yes')}>Yes</button>
+          <button className="options" type="button" onClick={() => handleUnsureAnsweredQuestion4('some not all')}>Some not all</button>
+          <button className="options" type="button" onClick={() => handleUnsureAnsweredQuestion4('no')}>No</button><br /><br />
+          <div className="navigation-buttons">
+            <button className='back-button' type="button" onClick={handleBack}>Back</button>
+          </div>
         </div>
       )}
 
       {/* NEXT BUTTON */}
-      {(gluten === 'no' || (gluten === 'yes' && glutenMenuAmount) || (gluten === 'not-sure' && isGlutenFree === 'no')) && (gluten === 'yes' && !isQuestionThreeRequestVisible) && (
+      {isComplete && (
         <button 
           className="button-category" 
           onClick={(e) => {

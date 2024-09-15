@@ -34,32 +34,17 @@ body {
     color: #333; /* Adjust the color as needed */
 }
 
-  /*
-    .start-button {  
-        display: inline-block;  background-color: #f4511e;  border: none;  color: #FFFFFF;  text-align: center;  font-size: 28px;  padding: 20px;  width: 200px;  transition: all 0.5s;  cursor: pointer;  margin: 5px;
-    }
-
-    .start-button span {  cursor: pointer;  display: inline-block;  position: relative;  transition: 0.5s;}
-    .button span:after {
-        content: '\00bb';
-        position: absolute;  opacity: 0;  top: 0;  right: -20px;  transition: 0.5s;}
-    .start-button:hover span {  padding-right: 25px;}
-    .start-button:hover span:after {  opacity: 1;  right: 0;}
-
-  .start-button {
-    display: block;
-    padding: 10px 20px;
-    font-size: 16px;
-    margin-top: 20px;
-    cursor: pointer;
-    color: #ffffff;
-    background-color: #0A007B;
-    width: 100px;
-    height: 50px;
-    text-align: center;
-    float: right;
+  .language-selector {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
   }
-  */
+  
+  .language-selector select {
+    padding: 5px;
+    font-size: 16px;
+  }
 
 .start-button {
     display: flex;
@@ -135,20 +120,22 @@ body {
 }
 
 .small {
-    display: block;
-    width: 100vw;
-    float: right;
+  height: 70px;
+  width: 95vw;
+  padding: 10px;
 }
+
 
 .homie {
     display:flex;
     flex-direction: column;
+    width: 100%;
     align-items: center;
     background-color: #F1F4FF;
 }
 
 .smallerig {
-    width: 100 vw;
+    width: 95%;
     display: block;
     align-items: center;
 }
@@ -185,6 +172,10 @@ svg {
 
 .top {
     margin-top: 40px;
+}
+
+input {
+    border-radius: 50px;
 }
 
 .sidebar {
@@ -250,6 +241,7 @@ h2 {
     width: 400px;
     flex-grow: 3;
     padding-top: 0px;
+    flex-direction: column;
 }
 
 .progress-bar {
@@ -276,7 +268,7 @@ h2 {
 
 .survey-section.active {
     display: flex;
-    width:100%;
+    width:95%;
     flex-grow:3;
     flex-direction: column;
     align-items: center;
@@ -361,6 +353,29 @@ button {
     border-radius: 50px;
     width: 75%;
     cursor: pointer;
+}
+
+.options {
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 100%;
+}
+
+.options button {
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 100%;
+}
+
+.check {
+  padding-top: 4%;
+  padding-right: 3%;
+  padding-left: 7px;
+}
+
+.question {
+  display: flex;
+  flex-direction: row;
 }
 
 button:hover{
@@ -458,3 +473,67 @@ button:hover{
     margin: 5px 0;
   }
   
+  .navigation-buttons button{
+    display: flex;
+    width: 120px;
+    padding: 17px 19px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 30px;
+    border: 1px #0A007B;
+    background: linear-gradient(0deg, #FFF 0%, #FFF 100%), #0B017C;
+  }
+
+  .input {
+    color: #fff;
+    font-size: 0.9rem;
+    background-color: transparent;
+    width: 100%;
+    box-sizing: border-box;
+    padding-inline: 0.5em;
+    padding-block: 0.7em;
+    border: none;
+    border-bottom: var(--border-height) solid var(--border-before-color);
+  }
+  
+  .input-border {
+    position: absolute;
+    background: var(--border-after-color);
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  }
+  
+  .input:focus {
+    outline: none;
+  }
+  
+  .input:focus + .input-border {
+    width: 100%;
+  }
+  
+  .form-control {
+    position: relative;
+    --width-of-input: 300px;
+  }
+
+  
+  
+  .input-alt {
+    font-size: 1.2rem;
+    padding-inline: 1em;
+    padding-block: 0.8em;
+  }
+  
+  .input-border-alt {
+    height: 3px;
+    background: linear-gradient(90deg, #FF6464 0%, #FFBF59 50%, #47C9FF 100%);
+    transition: width 0.4s cubic-bezier(0.42, 0, 0.58, 1.00);
+  }
+  
+  .input-alt:focus + .input-border-alt {
+    width: 100%;
+  }

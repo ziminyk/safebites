@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles.css';
 import useWindowSize from 'react-use/lib/useWindowSize'
 import Confetti from 'react-confetti'
 
 const Results = ({ score }) => {
   const { width, height } = useWindowSize();
-  var tweenFunctions = require('tween-functions');
+  const [confettiActive, setConfettiActive] = useState(true);
+  
+  useEffect(() => {
+    // Stop confetti after 10 seconds
+    const timer = setTimeout(() => {
+      setConfettiActive(false);
+    }, 10000);
+    return () => clearTimeout(timer);
+  }, []);
+  
   const results = [
     { name: 'Gluten-free Friendly', score: score.gluten, threshold: 30 },
     { name: 'Dairy-free Friendly', score: score.dairy, threshold: 30 },
@@ -26,10 +35,7 @@ const Results = ({ score }) => {
   
   return (
     <div className="results-page">
-      <Confetti
-      width={width}
-      height={height}
-    />
+      {confettiActive && <Confetti width={width} height={height} recycle={false} />}
       <h1>Your Results</h1>
       <p>CONGRATULATIONS ON FINISHING THE SAFEBITES TEST!</p>
       <p>*20% may be cross contaminated</p>

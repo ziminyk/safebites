@@ -1,3 +1,0 @@
-<button type="button" onClick={onLogoClick} className="logo-button">
-        <img src={logo} alt="logo" className="logo" />
-      </button>

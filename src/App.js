@@ -25,6 +25,17 @@ import logo from './images/logo.png'
 const App = () => {
   const [currentSection, setCurrentSection] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [sectionCompleteness, setSectionCompleteness] = useState({
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+    6: false,
+    7: false,
+    8: false,
+    9: false,
+  });
   const [score, setScore] = useState({
     gluten: 0,
     dairy: 0,
@@ -44,19 +55,29 @@ const App = () => {
 
   const handleNext = (section, category, increment) => {
     setCurrentSection(section); 
-    setProgress((section - 1) * 100 / 15);
+    setProgress(((section - 1) / 14) *100);
     setScore(prevScore => ({
       ...prevScore,
       [category]: prevScore[category] + increment
+    }));
+    setSectionComplete(section - 1, true);
+  };
+
+  const setSectionComplete = (section, isComplete) => {
+    setSectionCompleteness((prev) => ({
+      ...prev,
+      [section]: isComplete,
     }));
   };
 
   const startSurvey = () => {
     setCurrentSection(1);
+    setProgress(0);
   };
 
   const handleLogoClick = () => {
     setCurrentSection(0);
+    setProgress(0);
   };
 
   return (
@@ -72,10 +93,11 @@ const App = () => {
         </div>
       ) : (
         <>
-      <Header onLogoClick={handleLogoClick} />
+      <Header header={handleLogoClick} />
       <div className="stuff">
-        <Sidebar currentSection={currentSection} onNext={handleNext} />
+        <Sidebar currentSection={currentSection} onNext={handleNext} sectionCompleteness={sectionCompleteness} />
         <div className="main-content">
+          <ProgressBar progress={progress} />
           {currentSection === 1 && <Category1 onNext={handleNext} />}
           {currentSection === 2 && <Category2 onNext={handleNext} />}
           {currentSection === 3 && <Category3 onNext={handleNext} />}

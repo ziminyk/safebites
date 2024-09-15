@@ -73,29 +73,34 @@ const Category10 = ({ onNext }) => {
 
     return (
         <div className="survey-section active">
-            <ProgressBar progress={progress} />
             {currentQuestion === 1 && (
                 <div>
                     <h2 id="question">QUESTION 1</h2>
                     <label className="title-text">How many items does your menu have in total?</label>
-                    <input 
-                        type="number" 
-                        value={questionOneAnswer} 
-                        onChange={handleQuestionOne} 
-                        min="0" 
-                    />
+                    <div className="form-control">
+                        <input 
+                            className="input input-alt" 
+                            placeholder="Enter a number" 
+                            required 
+                            type="number" 
+                        />
+                        <span className="input-border input-border-alt"></span>
+                    </div>
                 </div>
             )}
             {currentQuestion === 2 && (
                 <div>
                     <h2 id="question">QUESTION 2</h2>
                     <label className="title-text">How many of your menu items are free of meat but include other animal products (e.g., dairy, eggs, or honey)?</label>
-                    <input 
-                        type="number" 
-                        value={questionTwoAnswer} 
-                        onChange={handleQuestionTwo} 
-                        min="0" 
-                    />
+                    <div className="form-control">
+                        <input 
+                            className="input input-alt" 
+                            placeholder="Enter a number" 
+                            required 
+                            type="number" 
+                        />
+                        <span className="input-border input-border-alt"></span>
+                    </div>
                 </div>
             )}
             {currentQuestion === 3 && (
@@ -103,9 +108,9 @@ const Category10 = ({ onNext }) => {
                     <h2 id="question">QUESTION 3</h2>
                     <label className="title-text">Do you offer plant-based protein options (e.g., beans, lentils, tofu) as substitutes for meat in other non-vegetarian dishes?</label>
                     <div>
-                        <button onClick={() => handleQuestionThree('Yes')}>Yes</button>
-                        <button onClick={() => handleQuestionThree('No')}>No</button>
-                        <button onClick={() => handleQuestionThree('Unsure')}>Unsure</button>
+                        <button className="options" onClick={() => handleQuestionThree('Yes')}>Yes</button>
+                        <button className="options" onClick={() => handleQuestionThree('No')}>No</button>
+                        <button className="options" onClick={() => handleQuestionThree('Unsure')}>Unsure</button>
                     </div>
                 </div>
             )}

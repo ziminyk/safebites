@@ -38,7 +38,6 @@ const Category11 = ({ onNext }) => {
 
     return (
         <div className="survey-section active">
-            <ProgressBar progress={progress} />
             {currentQuestion === 1 && (
                 <div>
                     <h2 id="question">QUESTION 1</h2>
@@ -56,9 +55,9 @@ const Category11 = ({ onNext }) => {
                     <h2 id="question">QUESTION 2</h2>
                     <label className="title-text">Is it possible to make other non-vegan items on the menu free of animal products?</label>
                     <div>
-                        <button onClick={() => handleQuestionTwo('Yes')}>Yes</button>
-                        <button onClick={() => handleQuestionTwo('No')}>No</button>
-                        <button onClick={() => handleQuestionTwo('Unsure')}>Some</button>
+                        <button className="options" onClick={() => handleQuestionTwo('Yes')}>Yes</button>
+                        <button className="options" onClick={() => handleQuestionTwo('No')}>No</button>
+                        <button className="options" onClick={() => handleQuestionTwo('Unsure')}>Some</button>
                     </div>
                 </div>
             )}
